@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brioche — Cold-Fermented Donuts, Karachi</title>
+<meta name="description" content="Cold-fermented brioche donuts, 20+ hours from dough to donut. Enriched with milk, eggs and butter. Fried fresh for every preorder in Karachi. Daily pickup and delivery at 7pm." />
+<meta property="og:title" content="Brioche — Cold-Fermented Donuts, Karachi" />
+<meta property="og:description" content="20+ hours from dough to donut. Fried fresh for every preorder. Daily at 7pm." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   BRIOCHE — edit the CONFIG block in the <script> at the bottom
+   to change your WhatsApp number, pickup details and daily menu.
+   ============================================================ */
+:root{
+  --cream:#FBF4EA;
+  --cream-2:#FFFCF6;
+  --ink:#2A1B12;
+  --ink-soft:#7A6353;
+  --crust:#C07E2E;
+  --crust-deep:#9A5E1E;
+  --berry:#AE4257;
+  --line:#EADBC6;
+  --shadow:0 1px 0 rgba(154,94,30,.05), 0 18px 40px -24px rgba(42,27,18,.30);
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{
+  font-family:"Fraunces",Georgia,serif;
+  font-variation-settings:"SOFT" 40,"opsz" 100;
+  font-weight:500;
+  line-height:1.04;
+  letter-spacing:-.01em;
+  margin:0;
+}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{width:min(1080px,92vw);margin-inline:auto}
+
+/* eyebrow */
+.eyebrow{
+  font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--crust-deep);display:inline-flex;align-items:center;gap:.6em;
+}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;border:2px solid var(--crust);}
+
+/* ring marker used as the donut motif */
+.ring{width:9px;height:9px;border-radius:50%;border:2.5px solid var(--crust);display:inline-block;vertical-align:middle}
+
+/* ---------- top bar ---------- */
+header.bar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(251,244,234,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.bar-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:baseline;gap:.55em;text-decoration:none}
+.brand b{font-family:"Fraunces",serif;font-variation-settings:"SOFT" 60;font-weight:600;font-size:24px;letter-spacing:-.02em}
+.brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+nav.links{display:flex;align-items:center;gap:26px}
+nav.links a{text-decoration:none;font-weight:500;font-size:15px;color:var(--ink-soft)}
+nav.links a:hover{color:var(--ink)}
+.btn{
+  display:inline-flex;align-items:center;gap:.5em;border:none;cursor:pointer;
+  font-family:inherit;font-weight:600;font-size:15px;border-radius:999px;
+  padding:11px 20px;text-decoration:none;transition:transform .12s ease,background .2s;
+}
+.btn-solid{background:var(--ink);color:var(--cream-2)}
+.btn-solid:hover{transform:translateY(-1px);background:#3a271a}
+.btn-crust{background:var(--crust);color:#fff}
+.btn-crust:hover{transform:translateY(-1px);background:var(--crust-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--crust)}
+nav.links .btn{color:#fff}
+@media(max-width:720px){nav.links a:not(.btn){display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 48px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,7vw,74px);font-variation-settings:"SOFT" 50,"opsz" 144,"WONK" 1}
+.hero h1 em{font-style:italic;color:var(--crust-deep)}
+.hero p.lede{margin-top:22px;font-size:19px;color:var(--ink-soft);max-width:34ch}
+.hero-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.hero-note{margin-top:20px;font-size:14px;color:var(--ink-soft)}
+.hero-note b{color:var(--ink);font-weight:600}
+
+/* hero image / fallback */
+.shot{
+  position:relative;aspect-ratio:4/5;border-radius:26px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 30% 15%, #F6D9A6 0%, #E3A85B 38%, #C07E2E 68%, #8A521A 100%);
+  box-shadow:var(--shadow);
+  display:flex;align-items:flex-end;
+}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shot .fallback{
+  position:relative;z-index:1;padding:22px;color:#fff8ee;width:100%;
+  background:linear-gradient(to top,rgba(60,32,10,.55),transparent 60%);
+}
+.shot .fallback .big{font-family:"Fraunces",serif;font-weight:500;font-size:20px}
+.shot .fallback small{opacity:.85}
+/* CSS donut so the fallback never looks empty */
+.shot .donut{
+  position:absolute;z-index:0;top:50%;left:50%;translate:-50% -55%;
+  width:46%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 32%,#FBE2B4,#D89A4E 55%,#A9691F);
+  box-shadow:inset 0 -14px 30px rgba(120,66,18,.5), 0 20px 40px -14px rgba(80,44,10,.6);
+}
+.shot .donut::before{content:"";position:absolute;inset:33%;border-radius:50%;
+  background:radial-gradient(circle at 40% 40%,#E9C68C,#C99A52);box-shadow:inset 0 6px 14px rgba(120,66,18,.45)}
+.shot .donut::after{content:"";position:absolute;inset:-2% -2% 40% -2%;border-radius:50% 50% 45% 45%;
+  background:radial-gradient(60% 80% at 50% 20%,#7A2E3E,#5A2130);opacity:.92;
+  mask:radial-gradient(circle at 50% 120%, transparent 42%, #000 43%)}
+
+@media(max-width:820px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .shot{aspect-ratio:5/4;max-height:60vh}
+}
+
+/* ---------- ferment strip ---------- */
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--cream-2)}
+.facts-in{display:grid;grid-template-columns:repeat(3,1fr)}
+.fact{padding:26px 24px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:none}
+.fact .n{font-family:"Fraunces",serif;font-weight:600;font-size:30px;font-variation-settings:"SOFT" 40}
+.fact .l{font-size:14.5px;color:var(--ink-soft);margin-top:2px}
+@media(max-width:720px){.facts-in{grid-template-columns:1fr}.fact{border-left:none;border-top:1px solid var(--line)}.fact:first-child{border-top:none}}
+
+/* ---------- section shell ---------- */
+section{padding:66px 0}
+.sec-head{max-width:56ch}
+.sec-head h2{font-size:clamp(28px,4.4vw,42px);margin-top:12px}
+.sec-head p{color:var(--ink-soft);margin-top:14px;font-size:17.5px}
+
+/* ---------- menu / order ---------- */
+.order-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:36px;margin-top:34px;align-items:start}
+@media(max-width:900px){.order-grid{grid-template-columns:1fr}}
+
+.item{
+  display:flex;gap:18px;align-items:center;justify-content:space-between;
+  background:var(--cream-2);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;margin-bottom:14px;
+}
+.item .info{min-width:0}
+.item h3{font-size:21px;font-variation-settings:"SOFT" 40}
+.item .tag{
+  display:inline-block;margin-top:6px;font-size:12px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--crust-deep);
+}
+.item .desc{color:var(--ink-soft);font-size:14.5px;margin-top:6px}
+.item .price{font-family:"Fraunces",serif;font-weight:600;font-size:19px;white-space:nowrap}
+.qty{display:flex;align-items:center;gap:0;border:1.5px solid var(--line);border-radius:999px;overflow:hidden}
+.qty button{width:36px;height:36px;border:none;background:transparent;font-size:19px;cursor:pointer;color:var(--ink);font-family:inherit}
+.qty button:hover{background:#f2e6d3}
+.qty span{min-width:26px;text-align:center;font-weight:600;font-size:15px}
+.controls{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+
+.preorder-note{
+  background:transparent;border:1px dashed var(--line);border-radius:var(--r);
+  padding:16px 20px;margin-top:6px;color:var(--ink-soft);font-size:14.5px;
+}
+.preorder-note b{color:var(--ink);font-weight:600}
+
+/* order summary card */
+.summary{
+  position:sticky;top:86px;background:var(--ink);color:#F6EBDD;border-radius:22px;
+  padding:24px;box-shadow:var(--shadow);
+}
+.summary h3{color:#fff;font-size:20px;font-variation-settings:"SOFT" 50}
+.summary .rows{margin:16px 0;border-top:1px solid rgba(255,255,255,.14);padding-top:14px;min-height:40px}
+.srow{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;padding:5px 0;color:#E7D6C3}
+.srow.empty{color:#9d8a78;font-style:italic}
+.srow .x{opacity:.6}
+.summary .disc{color:#F0B27A}
+.summary .total{display:flex;justify-content:space-between;align-items:baseline;
+  border-top:1px solid rgba(255,255,255,.14);margin-top:12px;padding-top:14px}
+.summary .total .lab{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#c9b6a2}
+.summary .total .amt{font-family:"Fraunces",serif;font-weight:600;font-size:30px;color:#fff}
+.summary .btn{width:100%;justify-content:center;margin-top:16px}
+.summary small{display:block;margin-top:12px;color:#b3a08d;font-size:12.5px;line-height:1.5}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{background:var(--cream-2);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.step .k{font-family:"Fraunces",serif;font-weight:600;color:var(--crust);font-size:15px;display:flex;align-items:center;gap:8px}
+.step h3{font-size:20px;margin:10px 0 6px}
+.step p{color:var(--ink-soft);font-size:15px}
+
+/* ---------- story ---------- */
+.story{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center}
+@media(max-width:820px){.story-grid{grid-template-columns:1fr;gap:26px}}
+.story-shot{aspect-ratio:1;border-radius:24px;overflow:hidden;background:
+  radial-gradient(130% 100% at 25% 20%,#F3D6A2,#C98F4B 55%,#7E4E1E);box-shadow:var(--shadow);position:relative}
+.story-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.story p{color:var(--ink-soft);margin-top:16px;font-size:17px}
+.story p b{color:var(--ink);font-weight:600}
+
+/* ---------- footer ---------- */
+footer{padding:56px 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px}
+@media(max-width:640px){.foot-grid{grid-template-columns:1fr;gap:22px}}
+footer .brand b{font-size:28px}
+footer p.tag{color:var(--ink-soft);margin-top:10px;max-width:36ch}
+.foot-links{display:flex;flex-direction:column;gap:10px}
+.foot-links a{text-decoration:none;color:var(--ink-soft);font-weight:500}
+.foot-links a:hover{color:var(--crust-deep)}
+.copy{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:26px;translate:-50% 0;background:var(--ink);color:#fff;
+  padding:12px 20px;border-radius:999px;font-size:14px;font-weight:500;opacity:0;pointer-events:none;
+  transition:opacity .25s,translate .25s;z-index:60}
+.toast.on{opacity:1;translate:-50% -6px}
+
+/* mobile sticky order button */
+.mbar{display:none}
+@media(max-width:900px){
+  .summary{position:static}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:rgba(251,244,234,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);
+    padding:12px 16px;gap:12px;align-items:center;justify-content:space-between}
+  .mbar .t{font-family:"Fraunces",serif;font-weight:600;font-size:20px}
+  .mbar .btn{flex:0 0 auto}
+  body{padding-bottom:72px}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="#top"><b>Brioche</b><span>Karachi</span></a>
+    <nav class="links">
+      <a href="#menu">Menu</a>
+      <a href="#how">How it works</a>
+      <a href="#story">Story</a>
+      <a class="btn btn-crust" id="navOrder" href="#menu">Order</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Cold-fermented · Fried to order</span>
+      <h1>The donut, <em>given time.</em></h1>
+      <p class="lede">Twenty hours of cold ferment. Enriched with milk, eggs and butter. Fried the evening you order, never before.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#menu">See tomorrow's menu</a>
+        <a class="btn btn-ghost" href="#how">How ordering works</a>
+      </div>
+      <p class="hero-note">Fresh every evening · <b>Pickup &amp; delivery at 7pm</b>, Kings Towers</p>
+    </div>
+
+    <div class="shot" aria-label="A cold-fermented brioche donut">
+      <!-- Drop your hero photo in: replace src below. Until then the drawn donut shows. -->
+      <div class="donut" aria-hidden="true"></div>
+      <img src="images/hero.jpg" alt="" onerror="this.style.display='none'"/>
+      <div class="fallback">
+        <div class="big">20+ hours, dough to donut</div>
+        <small>Airy crumb. Crisp edge. Glazed while warm.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FERMENT FACTS -->
+<div class="facts">
+  <div class="wrap facts-in">
+    <div class="fact"><div class="n">20+ hrs</div><div class="l">Slow cold ferment, for a lighter crumb</div></div>
+    <div class="fact"><div class="n">Small batch</div><div class="l">Fried fresh the evening of your order</div></div>
+    <div class="fact"><div class="n">7pm daily</div><div class="l">Pickup or delivery at Kings Towers</div></div>
+  </div>
+</div>
+
+<!-- MENU / ORDER -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tomorrow · mini donuts</span>
+      <h2>Pick your donuts.</h2>
+      <p>Mini donuts tomorrow, freshly fried for 7pm. Choose your flavours, and we'll message you back to confirm.</p>
+    </div>
+
+    <div class="order-grid">
+      <div>
+        <div id="itemList"></div>
+
+        <div class="preorder-note">
+          <b>Want the full size?</b> Regular donuts are made to preorder — <b>Rs.&nbsp;350</b> glazed, <b>Rs.&nbsp;390</b> filled. Message us a day ahead and we'll add them to your batch.
+        </div>
+        <div class="preorder-note">
+          <b>Boxes.</b> Two donuts take 5% off, four or more take 10% off — applied automatically as you add them.
+        </div>
+      </div>
+
+      <aside class="summary" id="summary">
+        <h3>Your order</h3>
+        <div class="rows" id="rows">
+          <div class="srow empty">Nothing added yet. Tap a + to start.</div>
+        </div>
+        <div id="discLine"></div>
+        <div class="total">
+          <span class="lab">Total</span>
+          <span class="amt" id="total">Rs. 0</span>
+        </div>
+        <a class="btn btn-crust" id="orderBtn" href="#">Order on WhatsApp</a>
+        <small>Opens WhatsApp with your order filled in. We reply to confirm the batch and your 7pm slot.</small>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Preordered, so it's never a day old.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="k"><span class="ring"></span> Step one</div>
+        <h3>Send your order</h3>
+        <p>Message us on WhatsApp by 2pm for the same evening. Pick flavours, sizes, and pickup or delivery.</p>
+      </div>
+      <div class="step">
+        <div class="k"><span class="ring"></span> Step two</div>
+        <h3>We fry fresh</h3>
+        <p>Your donuts come out of the oil that afternoon — glazed or filled while still warm, packed for the trip.</p>
+      </div>
+      <div class="step">
+        <div class="k"><span class="ring"></span> Step three</div>
+        <h3>7pm, at your door</h3>
+        <p>Collect from Kings Towers or have them delivered nearby. Warm, boxed, and made the same day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story" class="story">
+  <div class="wrap story-grid">
+    <div class="story-shot" aria-label="Javaria at work">
+      <img src="images/baker.jpg" alt="" onerror="this.style.display='none'"/>
+    </div>
+    <div>
+      <span class="eyebrow">Who's frying</span>
+      <h2>A donut worth the wait.</h2>
+      <p>I'm Javaria — Jojo to most people. I started with a simple stubbornness: most donuts in this city are made fast and eaten faster. I wanted the opposite.</p>
+      <p>So every batch rests in the cold for <b>more than twenty hours</b> before it ever meets the oil. That's what gives brioche its pull-apart crumb and its lightness. I fry in small batches, the evening you order, and glaze while it's still warm.</p>
+      <p>This is the start of something bigger. Every box gets me a little closer to doing it full-time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top"><b>Brioche</b><span>Karachi</span></a>
+        <p class="tag">Cold-fermented brioche donuts, fried fresh to order. Daily at 7pm, Kings Towers.</p>
+      </div>
+      <div class="foot-links">
+        <a href="https://instagram.com/brioche_pakistan" target="_blank" rel="noopener">Instagram @brioche_pakistan</a>
+        <a href="#" id="footWa">Order on WhatsApp</a>
+        <a href="#menu">See the menu</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Brioche · Karachi</span>
+      <span>Fried to order · <span class="ring"></span> Given time</span>
+    </div>
+  </div>
+</footer>
+
+<!-- mobile sticky order bar -->
+<div class="mbar">
+  <span class="t" id="mTotal">Rs. 0</span>
+  <a class="btn btn-crust" id="mOrder" href="#">Order on WhatsApp</a>
+</div>
+
+<div class="toast" id="toast">Added</div>
+
+<script>
+/* ============================================================
+   CONFIG  —  change these each day / when things move
+   ============================================================ */
+const CONFIG = {
+  // Your WhatsApp number in international format, digits only (92 = Pakistan).
+  // Example: 0300 1234567  ->  923001234567
+  whatsapp: "923001234567",
+
+  pickup: "Kings Towers, Play Area",
+  pickupTime: "7pm",
+  orderCutoff: "2pm",
+
+  // Box discounts by total number of donuts in the order
+  discounts: [
+    { min: 4, rate: 0.10, label: "Box of 4+ · 10% off" },
+    { min: 2, rate: 0.05, label: "Box of 2 · 5% off" }
+  ],
+
+  // TOMORROW'S MENU. Add/remove flavours here.
+  // filled:true prices at Rs.200 (mini). Set "sold:true" to grey one out.
+  menu: [
+    { id:"milk",   name:"Milk Chocolate & Sprinkles", desc:"Glazed in milk chocolate, showered in sprinkles.", filled:false },
+    { id:"dark",   name:"Dark Chocolate",             desc:"A darker, less-sweet chocolate glaze.",           filled:false },
+    { id:"nutella",name:"Nutella, Sugar-Rolled",      desc:"Filled with Nutella, rolled in fine sugar.",      filled:true  }
+  ],
+
+  priceMini:   { plain:180, filled:200 }, // mini donut prices
+  priceRegular:{ plain:350, filled:390 }  // shown in the preorder note above
+};
+/* ========================================================== */
+
+const cart = {};
+const $ = s => document.querySelector(s);
+const money = n => "Rs. " + n.toLocaleString("en-PK");
+const priceOf = it => it.filled ? CONFIG.priceMini.filled : CONFIG.priceMini.plain;
+
+function renderItems(){
+  const box = $("#itemList");
+  box.innerHTML = CONFIG.menu.map(it => `
+    <div class="item">
+      <div class="info">
+        <h3>${it.name}</h3>
+        <span class="tag">${it.filled ? "Filled" : "Glazed"} · Mini</span>
+        <div class="desc">${it.desc}</div>
+      </div>
+      <div class="controls">
+        <div class="price">${money(priceOf(it))}</div>
+        <div class="qty">
+          <button aria-label="remove one" onclick="bump('${it.id}',-1)">−</button>
+          <span id="q-${it.id}">0</span>
+          <button aria-label="add one" onclick="bump('${it.id}',1)">+</button>
+        </div>
+      </div>
+    </div>`).join("");
+}
+
+function bump(id, d){
+  cart[id] = Math.max(0, (cart[id]||0) + d);
+  $("#q-"+id).textContent = cart[id];
+  if(d>0) toast("Added " + CONFIG.menu.find(m=>m.id===id).name);
+  renderSummary();
+}
+
+function totals(){
+  let count=0, sub=0;
+  for(const it of CONFIG.menu){
+    const q = cart[it.id]||0;
+    count += q; sub += q*priceOf(it);
+  }
+  let disc = CONFIG.discounts.find(d=>count>=d.min) || null;
+  const off = disc ? Math.round(sub*disc.rate) : 0;
+  return {count, sub, disc, off, total: sub-off};
+}
+
+function renderSummary(){
+  const {count, sub, disc, off, total} = totals();
+  const rows = $("#rows");
+  const lines = CONFIG.menu.filter(it=>cart[it.id]).map(it=>
+    `<div class="srow"><span>${cart[it.id]}<span class="x">×</span> ${it.name}</span><span>${money(cart[it.id]*priceOf(it))}</span></div>`
+  );
+  rows.innerHTML = lines.length ? lines.join("") : `<div class="srow empty">Nothing added yet. Tap a + to start.</div>`;
+  $("#discLine").innerHTML = disc ? `<div class="srow disc"><span>${disc.label}</span><span>− ${money(off)}</span></div>` : "";
+  $("#total").textContent = money(total);
+  $("#mTotal").textContent = money(total);
+  const link = buildLink(total, count);
+  $("#orderBtn").href = link; $("#mOrder").href = link; $("#footWa").href = link;
+}
+
+function buildLink(total, count){
+  let msg = "Hi Brioche! I'd like to preorder for " + CONFIG.pickupTime + " pickup/delivery:%0a";
+  for(const it of CONFIG.menu){ if(cart[it.id]) msg += "• " + cart[it.id] + "x " + it.name + "%0a"; }
+  if(count===0) msg = "Hi Brioche! I'd like to preorder some donuts for " + CONFIG.pickupTime + ".%0a";
+  else msg += "Total: " + money(total).replace(/,/g,"") + "%0a";
+  msg += "Name:%0aPickup or delivery:%0aAddress (if delivery):";
+  return "https://wa.me/" + CONFIG.whatsapp + "?text=" + msg;
+}
+
+let tId;
+function toast(t){
+  const el=$("#toast"); el.textContent=t; el.classList.add("on");
+  clearTimeout(tId); tId=setTimeout(()=>el.classList.remove("on"),1400);
+}
+
+renderItems();
+renderSummary();
+</script>
+</body>
+</html>
