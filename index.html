@@ -64,6 +64,15 @@ img{max-width:100%;display:block}
 /* ring marker used as the donut motif */
 .ring{width:9px;height:9px;border-radius:50%;border:2.5px solid var(--crust);display:inline-block;vertical-align:middle}
 
+/* ---------- announcement strip ---------- */
+a.notice{
+  display:block;background:var(--ink);color:rgba(251,244,234,.78);
+  text-align:center;font-size:14px;font-weight:500;letter-spacing:.01em;
+  padding:9px 16px;text-decoration:none;
+}
+a.notice b{color:var(--cream);font-weight:700}
+a.notice:hover b{color:var(--crust)}
+
 /* ---------- top bar ---------- */
 header.bar{
   position:sticky;top:0;z-index:40;
@@ -246,6 +255,8 @@ footer p.tag{color:var(--ink-soft);margin-top:10px;max-width:36ch}
 </head>
 <body>
 
+<a class="notice" id="notice" href="#menu" hidden></a>
+
 <header class="bar">
   <div class="wrap bar-in">
     <a class="brand" href="#top"><b>Brioche</b><span>Pakistan</span></a>
@@ -418,6 +429,11 @@ const CONFIG = {
   pickupTime: "7pm",
   orderCutoff: "2pm",
 
+  // Top banner. Update todayLabel each morning; set it to "" to hide the banner.
+  // minisTonight: how many minis are up for grabs tonight (0 hides the count).
+  todayLabel: "Tuesday 22 July",
+  minisTonight: 30,
+
   // Box discounts by total number of donuts in the order
   discounts: [
     { min: 4, rate: 0.10, label: "Box of 4+ · 10% off" },
@@ -509,6 +525,17 @@ function toast(t){
   clearTimeout(tId); tId=setTimeout(()=>el.classList.remove("on"),1400);
 }
 
+function renderNotice(){
+  if(!CONFIG.todayLabel) return;
+  const n = $("#notice");
+  let t = "Preorders open for tonight, <b>" + CONFIG.todayLabel + "</b>";
+  if(CONFIG.minisTonight) t += " · Only <b>" + CONFIG.minisTonight + " minis</b>";
+  t += " · Closes <b>" + CONFIG.orderCutoff + "</b>";
+  n.innerHTML = t;
+  n.hidden = false;
+}
+
+renderNotice();
 renderItems();
 renderSummary();
 </script>

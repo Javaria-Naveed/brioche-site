@@ -19,7 +19,13 @@
       "Read(//c/Users/Novel Tech Inc/AppData/**)",
       "Bash(vercel whoami *)",
       "Read(//c/Users/Novel Tech Inc/**)",
-      "Read(//c/Users/Novel Tech Inc/AppData/Roaming/**)"
+      "Read(//c/Users/Novel Tech Inc/AppData/Roaming/**)",
+      "Bash(vercel api *)",
+      "Bash(python -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('name'\\)\\)\")",
+      "PowerShell(vercel api /v9/projects/brioche-pakistan 2>$null)",
+      "PowerShell(Test-Path \"$env:APPDATA\\\\npm\\\\node_modules\\\\vercel\\\\dist\\\\index.js\"; node \"$env:APPDATA\\\\npm\\\\node_modules\\\\vercel\\\\dist\\\\index.js\" api /v9/projects/brioche-site -X PATCH -H \"Content-Type: application/json\" -d '{\\\\\"name\\\\\":\\\\\"brioche-pakistan\\\\\"}')",
+      "PowerShell(vercel whoami --debug)",
+      "PowerShell(vercel api --help 2>&1)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Novel Tech Inc\\OneDrive\\Desktop\\brioche_pakistan\\images"
