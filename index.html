@@ -71,7 +71,8 @@ a.notice{
   padding:9px 16px;text-decoration:none;
 }
 a.notice b{color:var(--cream);font-weight:700}
-a.notice:hover b{color:var(--crust)}
+a.notice .go{color:var(--crust);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+a.notice:hover .go{color:var(--cream)}
 
 /* ---------- top bar ---------- */
 header.bar{
@@ -531,6 +532,7 @@ function renderNotice(){
   let t = "Preorders open for tonight, <b>" + CONFIG.todayLabel + "</b>";
   if(CONFIG.minisTonight) t += " · Only <b>" + CONFIG.minisTonight + " minis</b>";
   t += " · Closes <b>" + CONFIG.orderCutoff + "</b>";
+  t += " · <span class=\"go\">Order now</span>";
   n.innerHTML = t;
   n.hidden = false;
 }
