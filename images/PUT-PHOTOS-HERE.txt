@@ -1,1 +1,0 @@
-Drop hero.jpg and baker.jpg here (see README). Optional — the site works without them.
